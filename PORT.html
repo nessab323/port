@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Porfolio</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+</head>
+<body>
+  
+  <nav id="desktop-nav">
+    <div class="logo">Portfolio</div>
+    <div>
+      <ul class="nav-links">
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#experience">EXPERIENCE</a></li>
+        <li><a href="#projects">PROJECTS</a></li>
+        <li><a href="#contacts">CONTACTS</a></li>
+        </ul>
+    </div>
+  </nav>
+  <nav id="hamburger-nav">
+    <div class="logo">Nessa B</div>
+    <div class="hamburger-menu">
+      <div class="hamburger-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="menu-links">
+        <li><a href="#about" onclick="toggleMenu()">About</a></li>
+        <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+        <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+        <li><a href="#contacts" onclick="toggleMenu()">Contacts</a></li>
+      </div>
+    </div>
+  </nav>
+  <section id="profile">
+    <div class="section__pic-container">
+      <img src="./images/ani-nes.jpeg" alt="Illustration" class="hero-img rotate-on-load">
+    </div>
+    <div class="section__text">
+      <p class="section__text__p1">Hello I'm</p>
+      <h1 class="title">Nessa B</h1>
+      <p class="section__text__p2">Graphic Designer</p>
+      <div class="btn-container">
+        <button class="btn btn_btn2"
+  onclick="window.open('./New folder/assets/PROFILE-CV.pdf', '_blank')">
+  View CV
+</button>
+
+ <button class="btn btn_btn2"
+  onclick="window.open('https://mail.google.com/mail/?view=cm&to=nessabenterprise@yahoo.com','_blank')">
+  Contact Me
+</button>
+
+
+
+
+</div>
+
+      <div id="socials-container">
+        
+ 
+        <i class="fa-brands fa-linkedin icon"
+   onclick="location.href='https://www.linkedin.com/in/nessa-b-a93424371/'"></i>
+
+ 
+  <i class="fa-brands fa-whatsapp icon"
+     onclick="location.href='https://wa.me/07521335104'"></i>
+
+  <i class="fa-brands fa-x-twitter icon"
+     onclick="location.href='https://twitter.com/nes_benterprise'"></i>
+</div>
+
+      </div>
+    </div>
+  </section>
+ 
+    <section id="about">
+      <p class="section__text__p1">Get To Know Me More</p>
+      <h1 class="title">About Me</h1>
+      <div class="section-container">
+        <div class="section__pic-container">
+          <img src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" alt="About me" class="about-icon">
+
+
+        </div>
+        <div class="about-details-container">
+          <div class="about-containers">
+            <div class="details-containers">
+              <i class="fa-solid fa-briefcase"></i>
+              <h3 class="box">Experience</h3>
+              <p class="apple">2+ years <br>Graphic Designing</p>
+            </div>
+            <div class="details-containers">
+              <i class="fa-solid fa-graduation-cap"></i>
+
+              <h3>Education</h3>
+              <p class="apple">Bachelor of Technology Degree<br>Masters in CB</p>
+            </div>
+          </div>
+          <div class="text-container reveal">
+            <p id="typing-text"></p>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+  
+  <section id="experience">
+    
+    <p class="section__text__p3">Explore My</p>
+    <h1 class="title1">Experience</h1>
+    <div class="experience-details-container2">
+      <div class="about-containers2">
+        <div class="details-containers2 reveal">
+          <h2 class="experience-sub-title">Graphic Design</h2>
+          <div class="article-container">
+            <article>
+              <i class="fa-solid fa-circle-check reveal-icon"></i>
+
+              <h3>Adobe Photoshop</h3>
+              <p>Intermediate</p>
+            </article>
+            <article>
+              <i class="fa-solid fa-circle-check"></i>
+              <h3>Canva</h3>
+              <p>Experienced</p>
+            </article>
+            <article>
+              <i class="fa-solid fa-circle-check"></i>
+              <h3>Typography</h3>
+              <p>Experienced</p>
+            </article>
+            <article>
+              <i class="fa-solid fa-circle-check"></i>
+              <h3>Photo Manipulation</h3>
+              <p>Experienced</p>
+            </article>
+            <article>
+              <i class="fa-solid fa-circle-check"></i>
+              <h3>Color Theory</h3>
+              <p>Experienced</p>
+            </article>
+            <article>
+              <i class="fa-solid fa-circle-check"></i>
+              <h3>Visuals</h3>
+              <p>Basic</p>
+            </article>
+            
+          </div>
+        </div>
+        <div class="details-containers2">
+          <h2 class="experience-sub-title">Branding & Digital Media</h2>
+          <div class="article-container">
+            <article>
+              <i class="fa-solid fa-circle-check"></i>
+              <h3>Logo Design</h3>
+              <p>Intermediate</p>
+            </article>
+            <article>
+              <i class="fa-solid fa-circle-check"></i>
+              <h3>Brand Identity</h3>
+              <p>Experienced</p>
+            </article>
+            <article>
+              <i class="fa-solid fa-circle-check"></i>
+              <h3>Marketing</h3>
+              <p>Experienced</p>
+            </article>
+            <article>
+              <i class="fa-solid fa-circle-check"></i>
+              <h3>Poster & Flyer</h3>
+              <p>Experienced</p>
+            </article>
+            <article>
+              <i class="fa-solid fa-circle-check"></i>
+              <h3>Social Graphics</h3>
+              <p>Experienced</p>
+            </article>
+            <article>
+              <i class="fa-solid fa-circle-check"></i>
+              <h3>Video Editing</h3>
+              <p>Experienced</p>
+            </article>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="back-to-top">
+  <i class="fa-solid fa-arrow-up" onclick="location.href='#top'"></i>
+</div>
+
+
+  </section>
+  <section id="projects">
+    <p class="section__text__p1">Browse My Recent</p>
+    <h1 class="title">Projects</h1>
+    <div class="experience-details-container">
+      <div class="details-container class container">
+        <div class="article-container1">
+          <img src="./images/photo1.jpg" alt="" class="project-img">
+        </div>
+        <div>
+          <h2 class="experience-sub-title project-title">Project One</h2>
+          <div class="btn-container">
+            <button class="btn_btn2-project" >Visuals</button>
+            <button class="btn_btn2-project">Mood Boards</button>
+          </div>
+        </div>
+      </div>
+      <div class="details-container class container">
+        <div class="article-container1">
+          <img src="./images/beach.JPG" alt="" class="project-img">
+        </div>
+        <div>
+          <h2 class="experience-sub-title project-title">Project Two</h2>
+          <div class="btn-container">
+            <button class="btn_btn2-project" >Bold Type</button>
+            <button class="btn_btn2-project" >Dynamics</button>
+          </div>
+        </div>
+      </div>
+      <div class="details-container  container">
+        <div class="article-container1">
+          <img src="./images/typo.jpg" alt="" class="project-img">
+        </div>
+        <div>
+          <h2 class="experience-sub-title project-title">Project Three</h2>
+          <div class="btn-container">
+            <button class="btn_btn2-project" >Expressives</button>
+            <button class="btn_btn2-project" >Stylish</button>
+          </div>
+        </div>
+      </div>
+      <div class="details-container  container">
+        <div class="article-container1">
+          <img src="./images/video_editing_03.jpg" alt="" class="project-img">
+        </div>
+        <div>
+          <h2 class="experience-sub-title project-title">Project Four</h2>
+          <div class="btn-container">
+            <button class="btn_btn2-project" >Video</button>
+            <button class="btn_btn2-project" >Editing Pro</button>
+          </div>
+        </div>
+      </div>
+      <div class="details-container  container">
+        <div class="article-container1">
+          <img src="./images/bran.jpg" alt="" class="project-img">
+        </div>
+        <div>
+          <h2 class="experience-sub-title project-title">Project Five</h2>
+          <div class="btn-container">
+            <button class="btn_btn2-project" >Logo</button>
+            <button class="btn_btn2-project" >Identity</button>
+          </div>
+        </div>
+      </div>
+      <div class="details-container  container">
+        <div class="article-container1">
+          <img src="./images/logoo.jpeg" alt="" class="project-img">
+        </div>
+        <div>
+          <h2 class="experience-sub-title project-title">Project Six</h2>
+          <div class="btn-container">
+            <button class="btn_btn2-project" >Brand</button>
+            <button class="btn_btn2-project" >Identity</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="back-to-top">
+  <i class="fa-solid fa-arrow-up" onclick="location.href='#top'"></i>
+</div>
+
+<section id="contacts">
+  <h2 class="title">Contact Me</h2>
+
+  <form
+    id="contact-form"
+    class="contact-form"
+    action="https://formspree.io/f/mpqqrerr"
+    method="POST"
+  >
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <textarea name="message" placeholder="Your Message" required></textarea>
+    <button type="submit" class="btn">Send Message</button>
+    <p id="form-status"></p>
+  </form>
+</section>
+
+
+ 
+
+
+
+    
+  <footer>
+    <nav>
+      <div class="nav-links-container">
+        <ul class="nav-link">
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#experience">EXPERIENCE</a></li>
+        <li><a href="#projects">PROJECTS</a></li>
+        <li><a href="#contacts">CONTACTS</a></li>
+        </ul>
+      </div>
+    </nav>
+    <p>Copyright &#169; 2026 Nessa B. All Rights Reserved</p>
+  </footer> 
+<script src="main.js" defer></script>
+</body>
+</html>
