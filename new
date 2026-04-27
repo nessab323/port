@@ -1,0 +1,367 @@
+# Represents a single menu item
+import sys
+import ohbot
+from ohbot import ohbot 
+
+    
+
+def ohbotfunction(message):
+    """_summary_
+
+    Args:
+        message (_type_): _description_
+    """
+     
+        
+    ohbot.reset()
+    ohbot.wait(1)
+
+    ohbot.say(message)
+
+    ohbot.wait(1)
+
+    ohbot.say("Goodbye")
+
+    ohbot.move(ohbot.HEADNOD,3)
+
+    ohbot.move(ohbot.LIDBLINK,1)
+
+    ohbot.wait(1)
+
+    ohbot.close()
+
+class MenuItem:
+    def __init__(self, name, price, category):
+        """_summary_
+
+        Args:
+            name (_type_): _description_
+            price (_type_): _description_
+            category (_type_): _description_
+        """
+        self.name = name          # Item name
+        self._price = price        # Base price
+        self.category = category  # "food" or "drink"
+
+    def get_details(self):
+        """_summary_
+
+        Returns:
+            _type_: _description_
+        """
+        return f"{self.name} (£{self.price:.2f})"
+
+
+# Handles menu display and selection
+class Menu:
+    def __init__(self):
+        """
+        Docstring for __init__
+        
+        :param self: Description
+        """
+        self.items = []
+
+    def load_menu(self):
+        """
+        Docstring for load_menu
+        
+        :param self: Description
+        """
+        # Food items
+        self.items.append(MenuItem("Chicken", 10.00, "food"))
+        self.items.append(MenuItem("Samosas", 8.00, "food"))
+        self.items.append(MenuItem("Fish and Chips", 6.00, "food"))
+        self.items.append(MenuItem("Chicken Tikka Wrap", 4.00, "food"))
+        self.items.append(MenuItem("Veggie Soup", 3.00, "food"))
+        self.items.append(MenuItem("Apple Pie", 2.00, "food"))
+
+        # Drink items
+        self.items.append(MenuItem("Water", 1.50, "drink"))
+        self.items.append(MenuItem("Coke", 2.00, "drink"))
+        self.items.append(MenuItem("Orange Juice", 2.50, "drink"))
+        self.items.append(MenuItem("Tea", 1.20, "drink"))
+        self.items.append(MenuItem("Coffee", 1.80, "drink"))
+       
+        # Drink items
+        self.items.append(MenuItem("Brownie", 1.50, "dessert"))
+        self.items.append(MenuItem("Chocolate Cookie", 0.50, "dessert"))
+        self.items.append(MenuItem("Ice cream", 1.80, "dessert"))
+
+
+
+    def display_menu(self, show_header=True):
+        """
+        Docstring for display_menu
+        
+        :param self: Description
+        :param show_header: Description
+        """
+        if show_header:
+            print("\n" + "*" * 30)
+            print("\U0001F354 Welcome To The Canteen App")
+            print("*" * 30)
+
+        index = 1
+        self.numbered_items = []  # Stores items in display order
+
+        print("\n🍽 FOOD:")
+        for item in self.items:
+            if item.category == "food":
+                print(f"{index}. {item.get_details()}")
+                self.numbered_items.append(item)
+                index += 1
+
+        print("\n🥤 DRINKS:")
+        for item in self.items:
+            if item.category == "drink":
+                print(f"{index}. {item.get_details()}")
+                self.numbered_items.append(item)
+                index += 1
+        
+        print("\n🥤 DESSERTS:")
+        for item in self.items:
+            if item.category == "dessert":
+                print(f"{index}. {item.get_details()}")
+                self.numbered_items.append(item)
+                index += 1
+
+    def get_item_by_number(self, choice):
+        """
+        Docstring for get_item_by_number
+        
+        :param self: Description
+        :param choice: Description
+        """
+        if 1 <= choice <= len(self.numbered_items):
+            return self.numbered_items[choice - 1]
+        return None
+
+    def display_actions(self):
+        """_summary_
+        """
+        print("\n" + "-" * 30)
+        print("[view] View Current Order")
+        print("[remove] Remove Item")
+        print("[clear] Clear Cart")
+        print("[checkout] Finalize and Pay")
+        print("[exit] Exit Application")
+        print("-" * 30)
+
+
+# Handles cart logic
+class Order:
+    def __init__(self):
+        """
+        Docstring for __init__
+        
+        :param self: Description
+        """
+        self.cart = []
+
+    def add_item(self, name, price, quantity):
+        """
+        Docstring for add_item
+        
+        :param self: Description
+        :param name: Description
+        :param price: Description
+        :param quantity: Description
+        """
+        # Add item with quantity
+        self.cart.append({
+            "name": name,
+            "price": price,
+            "quantity": quantity
+        })
+        print(f"-> Added {quantity} x {name} to your order.")
+
+    def remove_item(self, name):
+        """
+        Docstring for remove_item
+        
+        :param self: Description
+        :param name: Description
+        """
+        # Remove first matching item
+        for item in self.cart:
+            if item["name"].lower() == name.lower():
+                self.cart.remove(item)
+                print(f"-> Removed {name} from your order.")
+                return
+        print("Item not found in cart.")
+
+    def clear_cart(self):
+        """_summary_
+        """
+        self.cart.clear()
+        print("-> Cart cleared.") 
+
+    def calculate_total(self):
+        """_summary_
+        """
+         # this is an example of an abstraction
+        # Multiply price by quantity
+        total = sum(item["price"] * item["quantity"] for item in self.cart)
+
+        discount = 0
+        if total > 20:
+            discount = total * 0.10  # 10% discount
+
+        return total, discount, total - discount
+
+    def display_cart(self):
+        """
+        Docstring for display_cart
+        
+        :param self: Description
+        """
+        print("\n" + "*" * 30)
+        print("\U0001F6D2 Your Current Order")
+        print("*" * 30)
+
+        if not self.cart:
+            print("Your cart is empty.")
+            return
+
+        # Display each item
+        for item in self.cart:
+            line_total = item["price"] * item["quantity"]
+            print(f"{item['name']} (x{item['quantity']}) - £{line_total:.2f}")
+
+        print("-" * 30)
+
+        total, discount, final = self.calculate_total()
+        print(f"Subtotal: £{total:.2f}")
+        print(f"Discount: -£{discount:.2f}")
+        print(f"Total: £{final:.2f}")
+
+
+# Main application controller
+class CanteenApp:
+    def __init__(self):
+        """_summary_
+        """
+        self.menu = Menu()
+        self.order = Order()
+        self.menu.load_menu()
+
+        self.first_display = True
+        self.ordering_mode = True
+
+    def handle_input(self, user_input):
+        """_summary_
+
+        Args:
+            user_input (_type_): _description_
+
+        Returns:
+            _type_: _description_
+        """
+        user = user_input.strip().lower()
+        message1 = str("You have selected" + user_input)
+        ohbotfunction(user_input)
+
+
+        if user == "exit":
+            print("\nThank you for using the Canteen App. Goodbye!")
+            return False
+
+        if user == "view":
+            self.order.display_cart()
+            input("\nPress Enter to continue...")
+            return True
+
+        if user == "remove":
+            name = input("Enter item name to remove: ")
+            self.order.remove_item(name)
+            return True
+
+        if user == "clear":
+            self.order.clear_cart()
+            return True
+
+        if user == "checkout":
+            self.order.display_cart()
+            print("\nThank you for your order!")
+            return False
+
+        if self.ordering_mode:
+            try:
+                choice = int(user_input)
+                item = self.menu.get_item_by_number(choice)
+
+                if item:
+                    # Handle drink sizes
+                    if item.category == "drink":
+                        size = input("Choose size (small/large): ").lower()
+
+                        if size == "large":
+                            price = item.price + 0.80
+                            name = f"{item.name} (Large), (L)"
+                        else:
+                            price = item.price
+                            name = f"{item.name} (Small), (S)"
+                    else:
+                        name = item.name
+                        price = item.price
+
+                    # Ask quantity
+                    try:
+                        quantity = int(input("How many would you like?: "))
+                        if quantity <= 0:
+                            print("Quantity must be at least 1.")
+                            return True
+                    except ValueError:
+                        print("Invalid quantity.")
+                        return True
+
+                    self.order.add_item(name, price, quantity)
+
+                    more = input("Add another item? (yes/no): ").lower()
+
+                    if more == "yes":
+                        return True
+                    elif more == "no":
+                        self.ordering_mode = False
+                        return True
+                    else:
+                        print("Invalid option.")
+                        return True
+                else:
+                    print("Invalid selection.")
+
+            except ValueError:
+                print("Please enter a valid number.")
+
+        else:
+            print("Invalid option. Use view/remove/clear/checkout/exit.")
+
+        input("\nPress Enter to continue...")
+        return True
+
+    def run(self):
+        """_summary_
+        """
+        running = True
+
+        while running:
+            if self.ordering_mode:
+                self.menu.display_menu(show_header=self.first_display)
+            else:
+                self.menu.display_actions()
+
+            user_input = input("Enter your choice: ")
+            running = self.handle_input(user_input)
+
+            self.first_display = False
+
+
+# Run the app
+if __name__ == "__main__":
+    try:
+        app = CanteenApp()
+        app.run()
+    except Exception as e:
+        print("\n!! CRITICAL SYSTEM ERROR !!")
+        print(f"Application terminated due to: {e}")
